@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to TikTok Post</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            // ID bài đăng TikTok
+            var videoId = "1234567890123456789";  // Thay thế bằng ID bài đăng của bạn
+            var username = "username";  // Thay thế bằng tên tài khoản TikTok của bạn
+
+            // Kiểm tra nếu người dùng truy cập từ thiết bị di động
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // URL mở ứng dụng TikTok với bài đăng cụ thể
+                window.location.href = "tiktok://video/" + videoId;
+                
+                // Nếu không mở được TikTok thì chuyển đến bài đăng trên trang web TikTok
+                setTimeout(function() {
+                    window.location.href = "https://www.tiktok.com/@" + username + "/video/" + videoId;
+                }, 1000); // Chờ 1 giây trước khi chuyển hướng sang trang web TikTok
+            } else {
+                // Người dùng đang trên máy tính bàn, chuyển hướng sang bài đăng trên trang web TikTok
+                window.location.href = "https://www.tiktok.com/@" + username + "/video/" + videoId;
+            }
+        };
+    </script>
+</head>
+<body>
+    <p>Đang chuyển hướng đến bài đăng trên TikTok...</p>
+</body>
+</html>
